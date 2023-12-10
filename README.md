@@ -1,6 +1,3 @@
-# notas-sandra-fotografia-2023.2
-
-
 # Sistema de notas - Projeto Fotografia
 
 Sistema de calculo de notas da disciplina de Ilustração Vetorial da Prof. Sandra 
