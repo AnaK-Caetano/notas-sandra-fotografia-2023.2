@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de notas</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <section class="body-container">
+        <h1>Cálculo das notas - Ilustração vetorial</h1>
+        <fieldset class="form-container">
+            <form action="#" method="post">
+                <div class="nome-aluno">
+                    <label for="nome">Nome do aluno</label>
+                    <input type="text" name="nome" minlength="12" required autocomplete="off">
+                </div>
+                <div class="select-projeto">
+                    <label for="projeto">Escolha seu projeto fotográfico </label>
+                    <select name="projeto" id="projeto-fotografico">
+                        <option value="interface">Interface</option>
+                        <option value="fotografia">Edição de fotografia</option>
+                        <option value="composicao">Composição</option>
+                        <option value="colagem">Colagem</option>
+                    </select>
+                </div>
+            </form>
+        </fieldset>
+        <button type="submit" onclick="votacao()"> Começar Apuração </button>
+    </section>
+</body>
+</html>
