@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apuração</title>
+    <link rel="stylesheet" href="form2.css">
 </head>
 <body>
-    <section>
-        <div id="resultado">
+    <section class="formulario-section">
+        <div id="resultado" class="body-container">
             <p>Nome do Aluno: <span id="nomeResultado"></span></p>
             <p>Tipo de Projeto Escolhido: <span id="tipoProjetoResultado"></span></p>
         </div>
 
-        <h1>Digite uma nota de 0 a 5</h1>
+        <h1 class="formulario-h1">Digite uma nota de 0 a 5</h1>
 
-        <fieldset>
-            <form id="avaliacaoForm">
+        <fieldset class="formulario-fieldset">
+            <form id="avaliacaoForm" class="formulario-form">
                 <div class="input-box">
                     <label for="tema">Temática bem definida</label>
                     <input type="number" name="tema" id="tema" required autocomplete="off" min="0" max="5">
@@ -39,4 +40,5 @@
     </section>
     <script src="calculo.js"></script>
 </body>
+
 </html>
