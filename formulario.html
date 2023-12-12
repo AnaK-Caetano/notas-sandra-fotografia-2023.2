@@ -3,35 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Apuração</title>
 </head>
 <body>
     <section>
-        <p>Digite uma nota de 0 a 10</p>
+        <div id="resultado">
+            <p>Nome do Aluno: <span id="nomeResultado"></span></p>
+            <p>Tipo de Projeto Escolhido: <span id="tipoProjetoResultado"></span></p>
+        </div>
+
+        <h1>Digite uma nota de 0 a 5</h1>
+
         <fieldset>
-            <form action="" method="post">
+            <form id="avaliacaoForm">
                 <div class="input-box">
                     <label for="tema">Temática bem definida</label>
-                    <input type="number" name="tema" required autocomplete="off">
+                    <input type="number" name="tema" id="tema" required autocomplete="off" min="0" max="5">
                 </div>
                 <div class="input-box">
                     <label for="criatividade">Criatividade/originalidade</label>
-                    <input type="number" name="criatividade" required autocomplete="off">
+                    <input type="number" name="criatividade" id="criatividade" required autocomplete="off" min="0" max="5">
                 </div>
                 <div class="input-box">
                     <label for="tecnica">Aspectos técnicos (ponto focal/qualidade de resolução)</label>
-                    <input type="number" name="tecnica" required autocomplete="off">
+                    <input type="number" name="tecnica" id="tecnica" required autocomplete="off" min="0" max="5">
                 </div>
                 <div class="input-box">
-                    <label for="desig">Aspectos de design (relação figura x fundo/ texto x fundo/hierarquia de informação/composição cromática)</label>
-                    <input type="number" name="design" required autocomplete="off">
+                    <label for="design">Aspectos de design (relação figura x fundo/ texto x fundo/hierarquia de informação/composição cromática)</label>
+                    <input type="number" name="design" id="design" required autocomplete="off" min="0" max="5">
                 </div>
-
+                <button type="button" onclick="registrarAvaliacao()">Registrar nota individual</button>
             </form>
         </fieldset>
-        <button type="submit"> Registrar </button>
-        <button type="submit"> Finalizar apuração </button>
+        <button type="button" onclick="calcularMediaPonderada('interface')">Finalizar apuração</button>
     </section>
-    
+    <script src="calculo.js"></script>
 </body>
 </html>

@@ -11,7 +11,7 @@
     <section class="body-container">
         <h1>Cálculo das notas - Ilustração vetorial</h1>
         <fieldset class="form-container">
-            <form action="#" method="post">
+            <form action="formulario.html" method="post" onsubmit="return votacao()">
                 <div class="nome-aluno">
                     <label for="nome">Nome do aluno</label>
                     <input type="text" name="nome" minlength="12" required autocomplete="off">
@@ -25,9 +25,11 @@
                         <option value="colagem">Colagem</option>
                     </select>
                 </div>
+                <button type="submit"> Começar Apuração </button>
             </form>
         </fieldset>
-        <button type="submit" onclick="votacao()"> Começar Apuração </button>
     </section>
+
+    <script src="calculo.js"></script>
 </body>
 </html>
