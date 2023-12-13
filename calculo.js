@@ -1,6 +1,6 @@
 let tipoProjetoSelecionado;
 
-/ Variável global para armazenar a quantidade de atrasos
+// Variável global para armazenar a quantidade de atrasos
 let contagemAtrasoSim = 0;
 let contagemAtrasoNao = 0;
 let mediaTotalPonderada = 0
@@ -43,7 +43,6 @@ const resultados = {
 
 // Função para registrar a avaliação individual
 function registrarAvaliacao() {
-    // valores dos inputs no segundo formulário
     let pontuacaoTematica = parseFloat(document.getElementById("tema").value);
     let pontuacaoCriatividade = parseFloat(document.getElementById("criatividade").value);
     let pontuacaoAspectosTecnicos = parseFloat(document.getElementById("tecnica").value);
@@ -69,21 +68,37 @@ function registrarAvaliacao() {
     resultados.totalAvaliadores++;
 
     // Aplicar desconto se a quantidade de "sim" for maior que a de "não"
-    if (contagemAtrasoSim > contagemAtrasoNao) {
-        // Aplicar desconto de 0.5
-        mediaTotalPonderada -= 0.5;
+    if (atrasoNaEntregaSelecionado === "sim") {
+        contagemAtrasoSim++;
+    } else if (atrasoNaEntregaSelecionado === "nao") {
+        contagemAtrasoNao++;
     }
 
     // Limpar os campos do formulário
     document.getElementById("avaliacaoForm").reset();
 
-    calcularMediaPonderada(tipoProjetoSelecionado);
+    // Verificar a contagem de atrasos e aplicar desconto se necessário
+    if (contagemAtrasoSim > contagemAtrasoNao) {
+        // Aplicar desconto de 0.5 após calcular a média ponderada
+        calcularMediaPonderada(tipoProjetoSelecionado);
+        mediaTotalPonderada -= 0.5;
+    } else {
+        // média ponderada sem desconto
+        calcularMediaPonderada(tipoProjetoSelecionado);
+    }
 }
+
 
 function calcularMediaPonderada(tipoProjeto) {
     // Verificar se há pelo menos um avaliador
     if (resultados.totalAvaliadores === 0) {
         alert("Nenhum avaliador registrou nota ainda.");
+        return;
+    }
+
+     // Verificar se o tipo do projeto existe nos pesos
+     if (!PESOS.hasOwnProperty(tipoProjeto)) {
+        alert("Tipo de projeto inválido.");
         return;
     }
 
