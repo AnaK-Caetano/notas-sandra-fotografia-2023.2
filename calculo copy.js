@@ -1,11 +1,4 @@
-let tipoProjetoSelecionado;
-
-/ Variável global para armazenar a quantidade de atrasos
-let contagemAtrasoSim = 0;
-let contagemAtrasoNao = 0;
-let mediaTotalPonderada = 0
-
-// json com os pesos para cada tipo de projeto
+// Constantes de pesos para cada tipo de projeto
 const PESOS = {
     interface: {
         tematica: 1.5,
@@ -41,14 +34,13 @@ const resultados = {
     totalAvaliadores: 0,
 };
 
-// Função para registrar a avaliação individual
+// Função chamada no segundo formulário
 function registrarAvaliacao() {
     // valores dos inputs no segundo formulário
     let pontuacaoTematica = parseFloat(document.getElementById("tema").value);
     let pontuacaoCriatividade = parseFloat(document.getElementById("criatividade").value);
     let pontuacaoAspectosTecnicos = parseFloat(document.getElementById("tecnica").value);
     let pontuacaoAspectosDesign = parseFloat(document.getElementById("design").value);
-    let atrasoNaEntregaSelecionado = document.getElementById("atraso").value;
 
     // validação das notas
     if (
@@ -68,16 +60,11 @@ function registrarAvaliacao() {
     resultados.aspectosDesign += pontuacaoAspectosDesign;
     resultados.totalAvaliadores++;
 
-    // Aplicar desconto se a quantidade de "sim" for maior que a de "não"
-    if (contagemAtrasoSim > contagemAtrasoNao) {
-        // Aplicar desconto de 0.5
-        mediaTotalPonderada -= 0.5;
-    }
-
     // Limpar os campos do formulário
     document.getElementById("avaliacaoForm").reset();
 
-    calcularMediaPonderada(tipoProjetoSelecionado);
+    // Exibir os resultados parciais se desejar
+    exibirResultadosParciais();
 }
 
 function calcularMediaPonderada(tipoProjeto) {
@@ -104,31 +91,43 @@ function calcularMediaPonderada(tipoProjeto) {
     // Calcular a média ponderada total
     let mediaTotalPonderada = pontuacaoTotalPonderada / (somaDosPesos * resultados.totalAvaliadores);
 
-        exibirResultadosFinais(mediaTotalPonderada);
-}
-
-function exibirResultadosFinais(mediaTotalPonderada) {
-    let resultadosDiv = document.getElementById("resultadosDiv");
-    resultadosDiv.innerHTML = `<p><strong>Média Total Ponderada: ${mediaTotalPonderada.toFixed(1)}</strong></p>`;
-    resultadosDiv.style.display = "block";
+    // Exibir os resultados finais
+    alert(`Média Total Ponderada: ${mediaTotalPonderada.toFixed(2)}`);
 }
 
 
+// Função para exibir os resultados parciais
+function exibirResultadosParciais() {
+    console.log("Resultados Parciais:", resultados);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// Função chamada no primeiro formulário
 function votacao() {
-    tipoProjetoSelecionado = document.getElementById("projeto-fotografico").value;
+    let tipoProjeto = document.getElementById("projeto-fotografico").value;
 
-    switch (tipoProjetoSelecionado) {
+    switch (tipoProjeto) {
         case "interface":
-            aplicarVotacaoParaProjeto(tipoProjetoSelecionado);
+            aplicarVotacaoParaProjeto(tipoProjeto);
             break;
         case "fotografia":
-            aplicarVotacaoParaProjeto(tipoProjetoSelecionado);
+            aplicarVotacaoParaProjeto(tipoProjeto);
             break;
         case "composicao":
-            aplicarVotacaoParaProjeto(tipoProjetoSelecionado);
+            aplicarVotacaoParaProjeto(tipoProjeto);
             break;
         case "colagem":
-            aplicarVotacaoParaProjeto(tipoProjetoSelecionado);
+            aplicarVotacaoParaProjeto(tipoProjeto);
             break;
         case "":
             console.log("Valor inválido");
@@ -139,11 +138,24 @@ function votacao() {
     }
 
     // Impedir o envio padrão do formulário
-    return true;
+    return false;
 }
 
-// Ação para voltar à página inicial
-document.getElementById("botaoVoltarIndex").addEventListener("click", function() {
-    // Redirecione para a página inicial (substitua "index.html" pelo nome da sua página inicial)
-    window.location.href = "index.html";
-});
+// Função genérica para aplicar votação para um projeto específico
+function aplicarVotacaoParaProjeto(tipoProjeto) {
+    // Lógica específica para votação de qualquer tipo de projeto
+    // ...
+    console.log(`Aplicando votação para projeto de ${tipoProjeto}`);
+
+    // Chame a função que define o segundo formulário
+    definirSegundoFormulario(tipoProjeto);
+}
+
+// Função para definir o segundo formulário com base no tipo de projeto
+function definirSegundoFormulario(tipoProjeto) {
+    // Lógica para definir o segundo formulário com base no tipo de projeto
+    // ...
+
+    // Chame a função para calcular a média ponderada após o registro de avaliações
+    calcularMediaPonderada(tipoProjeto);
+}

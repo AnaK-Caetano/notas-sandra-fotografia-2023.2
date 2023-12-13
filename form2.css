@@ -7,6 +7,12 @@
     font-family: 'Urbanist', sans-serif;
 }
 
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
 
 .formulario-section {
     text-align: center;
@@ -53,6 +59,15 @@
     font-weight: 600;
 }
 
+.select-atraso {
+    margin-bottom: 15px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
 .button-primary {
     padding: 10px;
     background-color: #4caf50;
@@ -64,4 +79,21 @@
 
 .button-primary:hover {
     background-color: #45a049;
+}
+
+.button-secondary{
+    padding: 10px;
+    background-color:  #a03f2e;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.button-secondary:hover{
+    background-color: #FF4F40;
+}
+
+.button-container{
+    display: flex;
+    justify-content: space-around;
 }
