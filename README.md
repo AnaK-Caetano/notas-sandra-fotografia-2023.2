@@ -29,7 +29,7 @@ Ao começar, o sistema deve cadastrar o aluno que será avaliado e o tipo de Pro
 Cada aluno da turma deve ter a capacidade de atribuir pontuações de 0 a 10 para cada um dos critérios de avaliação.
 
 4. **Penalidade por Não Cumprir o Prazo de Entrega:**
-Cada aluno pode votar se um aluno deve perder 0.5 ponto por não cumprir o prazo de entrega.
+Cada aluno pode votar se o aluno avaliado perderá 0.5 ponto por não cumprir o prazo de entrega.
 
 
 
