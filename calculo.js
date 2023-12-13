@@ -1,16 +1,3 @@
-let nomeAluno = sessionStorage.getItem("nomeAluno");
-let projetoSelecionado = sessionStorage.getItem("projetoSelecionado");
-
-document.getElementById("nomeResultado").innerText = nomeAluno;
-document.getElementById("tipoProjetoResultado").innerText = projetoSelecionado;
-
-
-let tipoProjetoSelecionado;
-
-// Variável global para armazenar a quantidade de atrasos
-let contagemAtrasoSim = 0;
-let contagemAtrasoNao = 0;
-let mediaTotalPonderada = 0
 
 // json com os pesos para cada tipo de projeto
 const PESOS = {
@@ -48,16 +35,13 @@ const resultados = {
     totalAvaliadores: 0,
 };
 
+// Variável global para armazenar a quantidade de atrasos
+let contagemAtrasoSim = 0;
+let contagemAtrasoNao = 0;
+let mediaTotalPonderada = 0
+
 // Função para registrar a avaliação individual
 function registrarAvaliacao() {
-    // Obter os valores armazenados na sessionStorage
-    let nomeAluno = sessionStorage.getItem("nomeAluno");
-    let projetoSelecionado = sessionStorage.getItem("projetoSelecionado");
-
-    // Preencher os resultados do formulário com os valores obtidos
-    document.getElementById("nomeResultado").innerText = nomeAluno;
-    document.getElementById("tipoProjetoResultado").innerText = projetoSelecionado;
-
     // Obter as pontuações do formulário
     let pontuacaoTematica = parseFloat(document.getElementById("tema").value);
     let pontuacaoCriatividade = parseFloat(document.getElementById("criatividade").value);
@@ -93,17 +77,16 @@ function registrarAvaliacao() {
     // Limpar os campos do formulário
     document.getElementById("avaliacaoForm").reset();
 
-    // Verificar a contagem de atrasos e aplicar desconto se necessário
-    if (contagemAtrasoSim > contagemAtrasoNao) {
-        // Aplicar desconto de 0.5 após calcular a média ponderada
-        calcularMediaPonderada(projetoSelecionado);
-        mediaTotalPonderada -= 0.5;
-    } else {
-        // média ponderada sem desconto
-        calcularMediaPonderada(projetoSelecionado);
-    }
+    // // Verificar a contagem de atrasos e aplicar desconto se necessário
+    // if (contagemAtrasoSim > contagemAtrasoNao) {
+    //     // Aplicar desconto de 0.5 após calcular a média ponderada
+    //     calcularMediaPonderada(projetoSelecionado);
+    //     mediaTotalPonderada -= 0.5;
+    // } else {
+    //     // média ponderada sem desconto
+    //     calcularMediaPonderada(projetoSelecionado);
+    // }
 }
-
 
 function calcularMediaPonderada(tipoProjeto) {
     // Verificar se há pelo menos um avaliador
@@ -145,20 +128,14 @@ function exibirResultadosFinais(mediaTotalPonderada) {
 }
 
 function votacao() {
-    tipoProjetoSelecionado = document.getElementById("projeto-fotografico").value;
+    tipoProjeto = document.getElementById("projeto-fotografico").value;
 
-    switch (tipoProjetoSelecionado) {
+    switch (tipoProjeto) {
         case "interface":
-            aplicarVotacaoParaProjeto(tipoProjetoSelecionado);
-            break;
         case "fotografia":
-            aplicarVotacaoParaProjeto(tipoProjetoSelecionado);
-            break;
         case "composicao":
-            aplicarVotacaoParaProjeto(tipoProjetoSelecionado);
-            break;
         case "colagem":
-            aplicarVotacaoParaProjeto(tipoProjetoSelecionado);
+            aplicarVotacaoParaProjeto(tipoProjeto);
             break;
         case "":
             console.log("Valor inválido");
