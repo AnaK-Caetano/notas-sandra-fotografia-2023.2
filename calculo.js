@@ -128,7 +128,6 @@ function exibirResultadosFinais(mediaTotalPonderada) {
     resultadosDiv.style.display = "block";
 }
 
-
 function votacao() {
     tipoProjetoSelecionado = document.getElementById("projeto-fotografico").value;
 
