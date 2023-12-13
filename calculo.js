@@ -1,3 +1,10 @@
+let nomeAluno = sessionStorage.getItem("nomeAluno");
+let projetoSelecionado = sessionStorage.getItem("projetoSelecionado");
+
+document.getElementById("nomeResultado").innerText = nomeAluno;
+document.getElementById("tipoProjetoResultado").innerText = projetoSelecionado;
+
+
 let tipoProjetoSelecionado;
 
 // Variável global para armazenar a quantidade de atrasos
@@ -43,13 +50,22 @@ const resultados = {
 
 // Função para registrar a avaliação individual
 function registrarAvaliacao() {
+    // Obter os valores armazenados na sessionStorage
+    let nomeAluno = sessionStorage.getItem("nomeAluno");
+    let projetoSelecionado = sessionStorage.getItem("projetoSelecionado");
+
+    // Preencher os resultados do formulário com os valores obtidos
+    document.getElementById("nomeResultado").innerText = nomeAluno;
+    document.getElementById("tipoProjetoResultado").innerText = projetoSelecionado;
+
+    // Obter as pontuações do formulário
     let pontuacaoTematica = parseFloat(document.getElementById("tema").value);
     let pontuacaoCriatividade = parseFloat(document.getElementById("criatividade").value);
     let pontuacaoAspectosTecnicos = parseFloat(document.getElementById("tecnica").value);
     let pontuacaoAspectosDesign = parseFloat(document.getElementById("design").value);
     let atrasoNaEntregaSelecionado = document.getElementById("atraso").value;
 
-    // validação das notas
+    // Validar as notas
     if (
         isNaN(pontuacaoTematica) || isNaN(pontuacaoCriatividade) ||
         isNaN(pontuacaoAspectosTecnicos) || isNaN(pontuacaoAspectosDesign) ||
@@ -80,11 +96,11 @@ function registrarAvaliacao() {
     // Verificar a contagem de atrasos e aplicar desconto se necessário
     if (contagemAtrasoSim > contagemAtrasoNao) {
         // Aplicar desconto de 0.5 após calcular a média ponderada
-        calcularMediaPonderada(tipoProjetoSelecionado);
+        calcularMediaPonderada(projetoSelecionado);
         mediaTotalPonderada -= 0.5;
     } else {
         // média ponderada sem desconto
-        calcularMediaPonderada(tipoProjetoSelecionado);
+        calcularMediaPonderada(projetoSelecionado);
     }
 }
 
