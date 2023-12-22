@@ -42,7 +42,6 @@ Cada aluno pode votar se o aluno avaliado perderá 0.5 ponto por não cumprir o 
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
 
 ## Referência
