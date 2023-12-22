@@ -42,7 +42,7 @@ Cada aluno pode votar se o aluno avaliado perderá 0.5 ponto por não cumprir o 
 
 ## Screenshots
 
-
+<img src="/img/print1.jpg">
 
 ## Referência
 
